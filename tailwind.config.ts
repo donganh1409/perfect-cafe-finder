@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,15 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				spot: {
+					50: '#f0f7ff',
+					100: '#e0eefe',
+					200: '#bae0fd',
+					300: '#7dcafb',
+					400: '#38b0f6',
+					500: '#0c96e7',
+					600: '#0077c8',
+					700: '#0160a3',
+					800: '#065186',
+					900: '#0a446f',
 				}
 			},
 			borderRadius: {
@@ -70,26 +73,56 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' },
+				},
+				fadeIn: {
+					from: { opacity: '0', transform: 'translateY(10px)' },
+					to: { opacity: '1', transform: 'translateY(0)' },
+				},
+				fadeOut: {
+					from: { opacity: '1', transform: 'translateY(0)' },
+					to: { opacity: '0', transform: 'translateY(10px)' },
+				},
+				pulse: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' },
+				},
+				shimmer: {
+					'0%': { backgroundPosition: '-1000px 0' },
+					'100%': { backgroundPosition: '1000px 0' },
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				slideUpAndFade: {
+					from: { opacity: '0', transform: 'translateY(5px)' },
+					to: { opacity: '1', transform: 'translateY(0)' },
+				},
+				slideRightAndFade: {
+					from: { opacity: '0', transform: 'translateX(-5px)' },
+					to: { opacity: '1', transform: 'translateX(0)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				fadeIn: 'fadeIn 0.5s ease-out forwards',
+				fadeOut: 'fadeOut 0.5s ease-out forwards',
+				pulse: 'pulse 2s ease-in-out infinite',
+				shimmer: 'shimmer 2.5s infinite linear',
+				float: 'float 5s ease-in-out infinite',
+				slideUpAndFade: 'slideUpAndFade 0.3s ease-out',
+				slideRightAndFade: 'slideRightAndFade 0.3s ease-out',
+			},
+			boxShadow: {
+				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
