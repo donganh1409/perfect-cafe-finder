@@ -23,12 +23,12 @@ export const FilterChip = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative inline-flex items-center py-1.5 px-3.5 rounded-full text-sm transition-all duration-300",
-        "overflow-hidden border",
+        "relative inline-flex items-center py-1.5 px-3.5 rounded-lg text-sm transition-all duration-300",
+        "overflow-hidden backdrop-blur-sm",
         isActive 
-          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-300/30" 
-          : "bg-white/70 text-indigo-700 border-indigo-200/50",
-        isHovered && !isActive && "bg-indigo-50/80",
+          ? "bg-accent/20 text-accent border border-accent/30" 
+          : "bg-muted/30 text-primary border border-muted/50",
+        isHovered && !isActive && "bg-muted/50",
         "hover:scale-105 active:scale-95 shadow-sm"
       )}
     >
@@ -36,10 +36,10 @@ export const FilterChip = ({
       {(isHovered || isActive) && (
         <span 
           className={cn(
-            "absolute inset-0 opacity-20",
+            "absolute inset-0 opacity-30",
             isActive 
-              ? "bg-gradient-to-r from-white/0 via-white/30 to-white/0" 
-              : "bg-gradient-to-r from-indigo-200/0 via-indigo-200/30 to-indigo-200/0",
+              ? "bg-gradient-to-r from-accent/0 via-accent/40 to-accent/0" 
+              : "bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0",
             "animate-shimmer"
           )} 
         />

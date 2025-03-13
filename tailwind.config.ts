@@ -19,6 +19,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
+				display: ['Outfit', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -54,16 +59,16 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				spot: {
-					50: '#f0f7ff',
-					100: '#e0eefe',
-					200: '#bae0fd',
-					300: '#7dcafb',
-					400: '#38b0f6',
-					500: '#0c96e7',
-					600: '#0077c8',
-					700: '#0160a3',
-					800: '#065186',
-					900: '#0a446f',
+					50: '#ecfeff',
+					100: '#cffcfe',
+					200: '#a6f5fb',
+					300: '#67e8f8',
+					400: '#22d3ee',
+					500: '#06b6d4',
+					600: '#0891b2',
+					700: '#0e7490',
+					800: '#155e75',
+					900: '#164e63',
 				}
 			},
 			borderRadius: {
