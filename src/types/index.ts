@@ -33,4 +33,16 @@ export interface Spot {
     phone?: string;
     website?: string;
   };
+  style?: string; // Japanese, European, Modern, etc.
+  distance?: number; // Distance in miles
+}
+
+export interface LocationOption {
+  id: string;
+  label: string;
+  value?: string;
+}
+
+export interface DistanceFilterOption extends FilterOption {
+  value: number;
 }
