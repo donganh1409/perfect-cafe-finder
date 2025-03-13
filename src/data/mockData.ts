@@ -1,10 +1,11 @@
-
 import { FilterOption, Spot, LocationOption, DistanceFilterOption } from "../types";
 
 export const defaultFilters: FilterOption[] = [
   { id: "open-now", label: "Open Now" },
   { id: "moderate-price", label: "$$" },
-  { id: "high-rated", label: "High Rated" }
+  { id: "high-rated", label: "High Rated" },
+  { id: "social-vibe", label: "Social Vibe" },
+  { id: "pet-friendly", label: "Pet Friendly" }
 ];
 
 export const distanceOptions: DistanceFilterOption[] = [
@@ -22,6 +23,10 @@ export const locationOptions: LocationOption[] = [
   { id: "midtown", label: "Midtown" },
   { id: "west-side", label: "West Side" },
   { id: "east-side", label: "East Side" },
+  { id: "north-side", label: "North Side" },
+  { id: "south-side", label: "South Side" },
+  { id: "art-district", label: "Arts District" },
+  { id: "university-area", label: "University Area" },
   { id: "custom", label: "Other location..." }
 ];
 
@@ -114,7 +119,7 @@ export const mockSpots: Spot[] = [
     rating: 4.5,
     style: "Bohemian Garden",
     distance: 0.4,
-    image: "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1516062423079-7ca13cad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
     badges: [
       { text: "0.4 miles away", type: "blue" },
       { text: "Open until 7pm", type: "green" },
@@ -435,9 +440,242 @@ export const mockSpots: Spot[] = [
       phone: "+1 (555) 789-0123",
       website: "https://example.com/rustic-roast"
     }
+  },
+  {
+    id: "11",
+    name: "Fusion Brew",
+    rating: 4.7,
+    style: "Asian Fusion",
+    distance: 2.3,
+    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    badges: [
+      { text: "2.3 miles away", type: "blue" },
+      { text: "Open until 9pm", type: "green" },
+      { text: "$$", type: "orange" }
+    ],
+    matchReasons: [
+      { 
+        key: "vibe", 
+        highlight: "Social atmosphere", 
+        description: "perfect for meeting friends" 
+      },
+      { 
+        key: "music", 
+        highlight: "Great music selection", 
+        description: "energetic but not too loud" 
+      },
+      { 
+        key: "seating", 
+        highlight: "Group-friendly seating", 
+        description: "with large tables and booths" 
+      }
+    ],
+    location: {
+      address: "234 Fusion Ave, Anytown, USA",
+      coordinates: {
+        lat: 37.7895,
+        lng: -122.4250
+      }
+    },
+    contact: {
+      phone: "+1 (555) 123-4567",
+      website: "https://example.com/fusion-brew"
+    },
+    vibes: "Energetic",
+    crowdedness: "Busy",
+    noiseLevel: "Moderate",
+    lightingType: "Ambient",
+    priceRange: "$$",
+    bestFor: ["Socializing", "Group Hangouts"]
+  },
+  {
+    id: "12",
+    name: "Bohemian Corner",
+    rating: 4.5,
+    style: "Bohemian",
+    distance: 1.7,
+    image: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    badges: [
+      { text: "1.7 miles away", type: "blue" },
+      { text: "Open until 11pm", type: "green" },
+      { text: "$$", type: "orange" }
+    ],
+    matchReasons: [
+      { 
+        key: "vibe", 
+        highlight: "Artistic vibe", 
+        description: "with local artwork on display" 
+      },
+      { 
+        key: "events", 
+        highlight: "Regular live music", 
+        description: "featuring local artists" 
+      },
+      { 
+        key: "seating", 
+        highlight: "Eclectic seating options", 
+        description: "from floor cushions to hanging chairs" 
+      }
+    ],
+    location: {
+      address: "345 Artistic Blvd, Anytown, USA",
+      coordinates: {
+        lat: 37.7850,
+        lng: -122.4310
+      }
+    },
+    contact: {
+      phone: "+1 (555) 234-5678",
+      website: "https://example.com/bohemian-corner"
+    },
+    vibes: "Creative",
+    crowdedness: "Moderate",
+    noiseLevel: "Moderate",
+    lightingType: "Dim",
+    priceRange: "$$",
+    bestFor: ["Socializing", "Dates", "Creative Inspiration"]
+  },
+  {
+    id: "13",
+    name: "Neon Nights Cafe",
+    rating: 4.6,
+    style: "Cyberpunk",
+    distance: 3.1,
+    image: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    badges: [
+      { text: "3.1 miles away", type: "blue" },
+      { text: "Open until 2am", type: "green" },
+      { text: "$$$", type: "orange" }
+    ],
+    matchReasons: [
+      { 
+        key: "vibe", 
+        highlight: "Futuristic atmosphere", 
+        description: "with neon lights and digital art" 
+      },
+      { 
+        key: "nightlife", 
+        highlight: "Late night spot", 
+        description: "popular with night owls" 
+      },
+      { 
+        key: "drinks", 
+        highlight: "Creative cocktails", 
+        description: "with unique presentation" 
+      }
+    ],
+    location: {
+      address: "567 Neon Way, Anytown, USA",
+      coordinates: {
+        lat: 37.7930,
+        lng: -122.4410
+      }
+    },
+    contact: {
+      phone: "+1 (555) 345-6789",
+      website: "https://example.com/neon-nights"
+    },
+    vibes: "Trendy",
+    crowdedness: "Very Busy",
+    noiseLevel: "High",
+    lightingType: "Neon",
+    priceRange: "$$$",
+    bestFor: ["Nightlife", "Socializing", "Photography"]
+  },
+  {
+    id: "14",
+    name: "Mountain View Lodge",
+    rating: 4.8,
+    style: "Alpine Cabin",
+    distance: 7.5,
+    image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    badges: [
+      { text: "7.5 miles away", type: "blue" },
+      { text: "Open until 9pm", type: "green" },
+      { text: "$$$", type: "orange" }
+    ],
+    matchReasons: [
+      { 
+        key: "vibe", 
+        highlight: "Cozy mountain lodge", 
+        description: "with fireplace and wood interior" 
+      },
+      { 
+        key: "views", 
+        highlight: "Scenic mountain views", 
+        description: "perfect for sunset viewing" 
+      },
+      { 
+        key: "food", 
+        highlight: "Artisanal comfort food", 
+        description: "sourced from local farms" 
+      }
+    ],
+    location: {
+      address: "8912 Mountain Rd, Anytown, USA",
+      coordinates: {
+        lat: 37.8200,
+        lng: -122.5100
+      }
+    },
+    contact: {
+      phone: "+1 (555) 456-7890",
+      website: "https://example.com/mountain-view"
+    },
+    vibes: "Relaxed",
+    crowdedness: "Moderate",
+    noiseLevel: "Low",
+    lightingType: "Warm",
+    priceRange: "$$$",
+    bestFor: ["Dates", "Small Groups", "Relaxation"]
+  },
+  {
+    id: "15",
+    name: "Tech Hub Cafe",
+    rating: 4.4,
+    style: "Modern Tech",
+    distance: 1.8,
+    image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+    badges: [
+      { text: "1.8 miles away", type: "blue" },
+      { text: "Open 24/7", type: "green" },
+      { text: "$$", type: "orange" }
+    ],
+    matchReasons: [
+      { 
+        key: "work", 
+        highlight: "Startup-friendly environment", 
+        description: "with meeting pods and whiteboards" 
+      },
+      { 
+        key: "tech", 
+        highlight: "Tech amenities", 
+        description: "including wireless charging and VR zone" 
+      },
+      { 
+        key: "networking", 
+        highlight: "Regular networking events", 
+        description: "for tech professionals" 
+      }
+    ],
+    location: {
+      address: "423 Innovation Way, Anytown, USA",
+      coordinates: {
+        lat: 37.7895,
+        lng: -122.4190
+      }
+    },
+    contact: {
+      phone: "+1 (555) 567-8901",
+      website: "https://example.com/tech-hub"
+    },
+    vibes: "Productive",
+    crowdedness: "Busy",
+    noiseLevel: "Moderate",
+    lightingType: "Bright",
+    priceRange: "$$",
+    bestFor: ["Working", "Networking", "Tech Meetups"]
   }
 ];
-
-// Adding more spots to reach 50 would follow the same pattern with different styles and distances
 
 export const defaultSearchQuery = "quiet cafe with outdoor seating and good wifi for working";

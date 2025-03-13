@@ -26,18 +26,20 @@ export const FilterChip = ({
         "relative inline-flex items-center py-1.5 px-3.5 rounded-full text-sm transition-all duration-300",
         "overflow-hidden border",
         isActive 
-          ? "bg-primary text-primary-foreground border-primary/20" 
-          : "bg-secondary text-secondary-foreground border-secondary/50",
-        isHovered && !isActive && "bg-secondary/70",
-        "hover:scale-105 active:scale-95"
+          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-indigo-300/30" 
+          : "bg-white/70 text-indigo-700 border-indigo-200/50",
+        isHovered && !isActive && "bg-indigo-50/80",
+        "hover:scale-105 active:scale-95 shadow-sm"
       )}
     >
       {/* Background animation */}
       {(isHovered || isActive) && (
         <span 
           className={cn(
-            "absolute inset-0 opacity-20 bg-gradient-to-r",
-            isActive ? "from-white/0 via-white/30 to-white/0" : "",
+            "absolute inset-0 opacity-20",
+            isActive 
+              ? "bg-gradient-to-r from-white/0 via-white/30 to-white/0" 
+              : "bg-gradient-to-r from-indigo-200/0 via-indigo-200/30 to-indigo-200/0",
             "animate-shimmer"
           )} 
         />

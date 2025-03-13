@@ -92,9 +92,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
       {/* Header */}
-      <header className="w-full py-6 bg-gradient-to-br from-spot-600 to-spot-800 text-white">
+      <header className="w-full py-6 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white">
         <div className="container max-w-screen-lg mx-auto px-4">
           <div className="text-center mb-8 animate-fadeIn">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">PerfectSpot</h1>
@@ -122,10 +122,10 @@ const Index = () => {
                   value={selectedDistance.id}
                   onValueChange={handleDistanceChange}
                 >
-                  <SelectTrigger className="bg-white/90 border-white/20">
+                  <SelectTrigger className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-indigo-200/50 text-indigo-700">
                     <SelectValue placeholder="Select distance" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white/95 backdrop-blur">
                     {distanceOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -141,10 +141,10 @@ const Index = () => {
                   value={selectedLocation.id}
                   onValueChange={handleLocationChange}
                 >
-                  <SelectTrigger className="bg-white/90 border-white/20">
+                  <SelectTrigger className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-200/50 text-purple-700">
                     <SelectValue placeholder="Choose location" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white/95 backdrop-blur">
                     {locationOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -163,7 +163,7 @@ const Index = () => {
                   placeholder="Enter a location..."
                   value={customLocation}
                   onChange={(e) => setCustomLocation(e.target.value)}
-                  className="bg-white/90 border-white/20"
+                  className="bg-white/60 border-purple-200/50 placeholder-purple-400"
                 />
               </div>
             )}
@@ -183,8 +183,9 @@ const Index = () => {
               onClick={() => handleSearch(searchQuery)}
               className={cn(
                 "w-full h-12 flex items-center justify-center gap-2",
-                "bg-white text-spot-800 rounded-xl font-medium",
-                "hover:bg-white/90 active:scale-[0.98] transition-all duration-200"
+                "bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium",
+                "hover:from-indigo-700 hover:to-purple-700 active:scale-[0.98] transition-all duration-200",
+                "shadow-md hover:shadow-lg"
               )}
             >
               <Search className="w-4 h-4" />
@@ -199,11 +200,11 @@ const Index = () => {
         {hasSearched && (
           <div className="mb-6 animate-fadeIn delay-2">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">
-                Best Matches <span className="text-muted-foreground">({spots.length})</span>
+              <h2 className="text-xl font-semibold text-indigo-900">
+                Best Matches <span className="text-purple-600">({spots.length})</span>
               </h2>
-              <div className="flex items-center text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 mr-1" />
+              <div className="flex items-center text-sm text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
+                <MapPin className="w-4 h-4 mr-1 text-purple-600" />
                 <span>{getLocationDisplay()}</span>
               </div>
             </div>
@@ -211,22 +212,22 @@ const Index = () => {
         )}
 
         {isLoading ? (
-          // Loading state
+          // Loading state with improved colors
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-2xl bg-card p-4 shadow-sm border border-border animate-pulse h-[460px]">
-                <div className="h-6 bg-muted rounded w-3/4 mb-2"></div>
-                <div className="h-4 bg-muted rounded w-1/4 mb-4 ml-auto"></div>
-                <div className="h-48 bg-muted rounded-xl mb-4"></div>
+              <div key={i} className="rounded-2xl bg-white/70 p-4 shadow-sm border border-indigo-100/50 animate-pulse h-[460px]">
+                <div className="h-6 bg-indigo-200/50 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-purple-200/50 rounded w-1/4 mb-4 ml-auto"></div>
+                <div className="h-48 bg-indigo-100/50 rounded-xl mb-4"></div>
                 <div className="flex gap-2 mb-4">
-                  <div className="h-6 bg-muted rounded-full w-24"></div>
-                  <div className="h-6 bg-muted rounded-full w-32"></div>
+                  <div className="h-6 bg-purple-100/50 rounded-full w-24"></div>
+                  <div className="h-6 bg-indigo-100/50 rounded-full w-32"></div>
                 </div>
-                <div className="h-32 bg-muted rounded-xl mb-4"></div>
+                <div className="h-32 bg-purple-100/30 rounded-xl mb-4"></div>
                 <div className="flex justify-between pt-2">
-                  <div className="h-8 bg-muted rounded w-1/4"></div>
-                  <div className="h-8 bg-muted rounded w-1/4"></div>
-                  <div className="h-8 bg-muted rounded w-1/4"></div>
+                  <div className="h-8 bg-indigo-100/50 rounded w-1/4"></div>
+                  <div className="h-8 bg-purple-100/50 rounded w-1/4"></div>
+                  <div className="h-8 bg-pink-100/50 rounded w-1/4"></div>
                 </div>
               </div>
             ))}
@@ -247,8 +248,8 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 bg-muted/30 border-t border-border mt-12">
-        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-muted-foreground">
+      <footer className="py-8 bg-indigo-50/80 border-t border-indigo-100 mt-12">
+        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-indigo-500">
           <p>© 2023 PerfectSpot. Find the perfect place that matches your needs.</p>
         </div>
       </footer>

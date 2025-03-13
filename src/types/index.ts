@@ -35,6 +35,12 @@ export interface Spot {
   };
   style?: string; // Japanese, European, Modern, etc.
   distance?: number; // Distance in miles
+  vibes?: string; // Energetic, Calm, Social, etc.
+  crowdedness?: string; // Quiet, Moderate, Busy, Very Busy
+  noiseLevel?: string; // Silent, Low, Moderate, High
+  lightingType?: string; // Bright, Dim, Natural, Ambient
+  priceRange?: string; // $, $$, $$$, $$$$
+  bestFor?: string[]; // ["Working", "Socializing", "Reading", "Dates"]
 }
 
 export interface LocationOption {
