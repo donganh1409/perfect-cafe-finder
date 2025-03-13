@@ -24,27 +24,29 @@ export const FilterChip = ({
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
         "relative inline-flex items-center py-1.5 px-3.5 rounded-lg text-sm transition-all duration-300",
-        "overflow-hidden backdrop-blur-sm",
+        "overflow-hidden backdrop-blur-sm font-medium tracking-wide",
         isActive 
-          ? "bg-accent/20 text-accent border border-accent/30" 
-          : "bg-muted/30 text-primary border border-muted/50",
-        isHovered && !isActive && "bg-muted/50",
-        "hover:scale-105 active:scale-95 shadow-sm"
+          ? "bg-accent/30 text-accent-foreground border border-accent/50" 
+          : "bg-muted/40 text-primary border border-muted/60",
+        isHovered && !isActive && "bg-muted/70",
+        "hover:scale-105 active:scale-95 shadow-md"
       )}
     >
       {/* Background animation */}
       {(isHovered || isActive) && (
         <span 
           className={cn(
-            "absolute inset-0 opacity-30",
+            "absolute inset-0 opacity-40",
             isActive 
-              ? "bg-gradient-to-r from-accent/0 via-accent/40 to-accent/0" 
-              : "bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0",
+              ? "bg-gradient-to-r from-accent/20 via-accent/50 to-accent/20" 
+              : "bg-gradient-to-r from-primary/10 via-primary/40 to-primary/10",
             "animate-shimmer"
           )} 
         />
       )}
-      {filter.label}
+      <span className={isActive ? "text-white font-semibold" : "text-foreground"}>
+        {filter.label}
+      </span>
     </button>
   );
 };

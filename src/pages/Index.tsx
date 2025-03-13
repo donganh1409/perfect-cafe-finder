@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { FilterChip } from "@/components/FilterChip";
@@ -31,6 +32,7 @@ const Index = () => {
     setIsLoading(true);
     
     const timer = setTimeout(() => {
+      // Display all spots from mockData, but filter by distance
       const filteredSpots = mockSpots.filter(spot => {
         if (!spot.distance) return true;
         return spot.distance <= selectedDistance.value;
@@ -39,7 +41,7 @@ const Index = () => {
       setSpots(filteredSpots);
       setHasSearched(true);
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
     
     return () => clearTimeout(timer);
   }, [searchQuery, activeFilters, selectedDistance, selectedLocation]);
@@ -86,18 +88,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] font-display">
-      <header className="w-full py-6 bg-gradient-to-br from-primary/80 via-secondary/80 to-accent/80 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 font-display">
+      <header className="w-full py-6 gradient-header text-white">
         <div className="container max-w-screen-lg mx-auto px-4">
           <div className="text-center mb-8 animate-fadeIn">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 font-display tracking-tight">PerfectSpot</h1>
-            <p className="text-white/80 font-mono">Find exactly what you're looking for</p>
+            <h1 className="text-3xl md:text-5xl font-bold mb-2 font-display tracking-tight text-foreground">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-secondary">
+                PerfectSpot
+              </span>
+            </h1>
+            <p className="text-foreground/90 font-mono tracking-wide">Find exactly what you're looking for</p>
           </div>
           
           <div 
             className={cn(
-              "max-w-2xl mx-auto p-5 rounded-2xl backdrop-blur-md",
-              "bg-card/30 shadow-lg border border-white/10",
+              "max-w-2xl mx-auto p-6 rounded-2xl",
+              "glass-dark shadow-lg border border-primary/20",
               "animate-fadeIn delay-1"
             )}
           >
@@ -113,10 +119,10 @@ const Index = () => {
                   value={selectedDistance.id}
                   onValueChange={handleDistanceChange}
                 >
-                  <SelectTrigger className="bg-muted/30 border-primary/20 text-primary backdrop-blur-sm">
+                  <SelectTrigger className="bg-muted/40 border-primary/30 text-foreground backdrop-blur-md">
                     <SelectValue placeholder="Select distance" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card/95 backdrop-blur border-primary/20">
+                  <SelectContent className="bg-card/95 backdrop-blur border-primary/30">
                     {distanceOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -131,10 +137,10 @@ const Index = () => {
                   value={selectedLocation.id}
                   onValueChange={handleLocationChange}
                 >
-                  <SelectTrigger className="bg-muted/30 border-secondary/20 text-secondary backdrop-blur-sm">
+                  <SelectTrigger className="bg-muted/40 border-secondary/30 text-foreground backdrop-blur-md">
                     <SelectValue placeholder="Choose location" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card/95 backdrop-blur border-secondary/20">
+                  <SelectContent className="bg-card/95 backdrop-blur border-secondary/30">
                     {locationOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -152,7 +158,7 @@ const Index = () => {
                   placeholder="Enter a location..."
                   value={customLocation}
                   onChange={(e) => setCustomLocation(e.target.value)}
-                  className="bg-muted/30 border-accent/20 placeholder-accent/50 backdrop-blur-sm"
+                  className="bg-muted/40 border-accent/30 placeholder-muted-foreground text-foreground backdrop-blur-md"
                 />
               </div>
             )}
@@ -174,11 +180,11 @@ const Index = () => {
                 "w-full h-12 flex items-center justify-center gap-2",
                 "bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl font-medium",
                 "hover:from-primary/90 hover:to-secondary/90 active:scale-[0.98] transition-all duration-200",
-                "shadow-md hover:shadow-lg backdrop-blur-sm"
+                "shadow-lg border border-primary/30 backdrop-blur-sm"
               )}
             >
               <Search className="w-4 h-4" />
-              <span>Find Perfect Spots</span>
+              <span className="tracking-wide">Find Perfect Spots</span>
             </button>
           </div>
         </div>
@@ -188,12 +194,12 @@ const Index = () => {
         {hasSearched && (
           <div className="mb-6 animate-fadeIn delay-2">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-primary font-display">
+              <h2 className="text-xl font-semibold text-primary font-display tracking-wide">
                 Best Matches <span className="text-accent">({spots.length})</span>
               </h2>
-              <div className="flex items-center text-sm text-accent bg-accent/10 px-3 py-1 rounded-full">
+              <div className="flex items-center text-sm text-foreground bg-accent/20 px-3 py-1.5 rounded-full border border-accent/30">
                 <MapPin className="w-4 h-4 mr-1 text-accent" />
-                <span>{getLocationDisplay()}</span>
+                <span className="font-medium">{getLocationDisplay()}</span>
               </div>
             </div>
           </div>
@@ -233,7 +239,7 @@ const Index = () => {
       </main>
 
       <footer className="py-8 bg-muted/10 border-t border-muted/20 mt-12">
-        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-primary/70 font-mono">
+        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-primary/80 font-mono">
           <p>© 2023 PerfectSpot. Find the perfect place that matches your needs.</p>
         </div>
       </footer>

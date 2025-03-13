@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,22 +14,22 @@
     --popover: 222 45% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 196 80% 65%;
+    --primary: 180 100% 60%;
     --primary-foreground: 222 47% 8%;
 
-    --secondary: 217 92% 76%;
+    --secondary: 210 100% 70%;
     --secondary-foreground: 222 47% 8%;
 
     --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 20% 75%;
 
-    --accent: 250 95% 76%;
+    --accent: 280 100% 70%;
     --accent-foreground: 222 47% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
+    --border: 217 33% 25%;
     --input: 217 33% 17%;
     --ring: 224 76% 48%;
 
@@ -71,11 +72,11 @@
   }
   
   .glass-dark {
-    @apply bg-foreground/5 backdrop-blur-lg border border-white/10 shadow-glass;
+    @apply bg-foreground/10 backdrop-blur-lg border border-white/20 shadow-glass;
   }
   
   .glass-accent {
-    @apply bg-primary/5 backdrop-blur-lg border border-primary/20 shadow-glass;
+    @apply bg-primary/10 backdrop-blur-lg border border-primary/30 shadow-glass;
   }
 
   /* Animation classes */
@@ -110,6 +111,20 @@
   
   .delay-5 {
     animation-delay: 0.5s;
+  }
+
+  /* Input styles with better visibility */
+  .search-input {
+    @apply text-foreground placeholder:text-muted-foreground/80 bg-background/80;
+  }
+
+  /* Futuristic gradient backgrounds */
+  .gradient-header {
+    @apply bg-gradient-to-br from-primary/80 via-secondary/60 to-accent/70;
+  }
+  
+  .gradient-card {
+    @apply bg-gradient-to-br from-card/90 to-card/70 backdrop-blur-md;
   }
 }
 
@@ -149,4 +164,23 @@ img.loading {
 
 img.loaded {
   opacity: 1;
+}
+
+/* Font adjustments for futuristic look */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display tracking-tight;
+}
+
+.font-futuristic {
+  @apply font-display tracking-wider;
+}
+
+/* Search input specific styles */
+input::placeholder {
+  @apply text-muted-foreground/70;
+}
+
+/* Improved select dropdowns */
+.select-futuristic {
+  @apply border-primary/40 text-foreground backdrop-blur-md;
 }

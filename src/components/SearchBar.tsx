@@ -54,13 +54,14 @@ export const SearchBar = ({
           onBlur={() => setIsFocused(false)}
           placeholder="What are you looking for? (e.g., 'quiet cafe with outdoor seating and good wifi')"
           className={cn(
-            "w-full h-14 pl-12 pr-4 rounded-xl bg-white",
-            "shadow-[0_2px_10px_0_rgba(0,0,0,0.05)]",
-            "border border-input focus:border-primary/50",
-            "text-foreground/90 placeholder:text-foreground/50",
-            "outline-none focus:ring-2 focus:ring-primary/20",
+            "w-full h-14 pl-12 pr-4 rounded-xl",
+            "shadow-lg",
+            "border-2 border-input focus:border-primary/50",
+            "text-foreground bg-background/60 backdrop-blur-md",
+            "placeholder:text-muted-foreground/80",
+            "outline-none focus:ring-2 focus:ring-primary/30",
             "transition-all duration-300",
-            "text-base md:text-lg"
+            "text-base md:text-lg font-medium"
           )}
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">
