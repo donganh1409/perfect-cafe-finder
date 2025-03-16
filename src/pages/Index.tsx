@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState(defaultSearchQuery);
-  const [activeFilters, setActiveFilters] = useState<string[]>(["open-now"]);
+  const [activeFilters, setActiveFilters] = useState<string[]>(["open-now", "work-friendly"]);
   const [spots, setSpots] = useState<Spot[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasSearched, setHasSearched] = useState(false);
@@ -32,7 +32,7 @@ const Index = () => {
     setIsLoading(true);
     
     const timer = setTimeout(() => {
-      // Display all spots from mockData, but filter by distance
+      // Display all spots from mockData, filtering by distance
       const filteredSpots = mockSpots.filter(spot => {
         if (!spot.distance) return true;
         return spot.distance <= selectedDistance.value;
@@ -88,22 +88,22 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 font-display">
-      <header className="w-full py-6 gradient-header text-white">
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 font-sans">
+      <header className="w-full py-6 bg-white shadow-sm border-b border-border/40">
         <div className="container max-w-screen-lg mx-auto px-4">
           <div className="text-center mb-8 animate-fadeIn">
-            <h1 className="text-3xl md:text-5xl font-bold mb-2 font-display tracking-tight text-foreground">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground via-primary to-secondary">
+            <h1 className="text-3xl md:text-5xl font-bold mb-2 font-display tracking-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary to-accent">
                 PerfectSpot
               </span>
             </h1>
-            <p className="text-foreground/90 font-mono tracking-wide">Find exactly what you're looking for</p>
+            <p className="text-muted-foreground font-mono tracking-wide">Find exactly what you're looking for</p>
           </div>
           
           <div 
             className={cn(
-              "max-w-2xl mx-auto p-6 rounded-2xl",
-              "glass-dark shadow-lg border border-primary/20",
+              "max-w-2xl mx-auto p-6 rounded-xl",
+              "bg-white shadow-md border border-border/30",
               "animate-fadeIn delay-1"
             )}
           >
@@ -119,10 +119,10 @@ const Index = () => {
                   value={selectedDistance.id}
                   onValueChange={handleDistanceChange}
                 >
-                  <SelectTrigger className="bg-muted/40 border-primary/30 text-foreground backdrop-blur-md">
+                  <SelectTrigger className="bg-background border-input text-foreground">
                     <SelectValue placeholder="Select distance" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card/95 backdrop-blur border-primary/30">
+                  <SelectContent className="bg-card border-input">
                     {distanceOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -137,10 +137,10 @@ const Index = () => {
                   value={selectedLocation.id}
                   onValueChange={handleLocationChange}
                 >
-                  <SelectTrigger className="bg-muted/40 border-secondary/30 text-foreground backdrop-blur-md">
+                  <SelectTrigger className="bg-background border-input text-foreground">
                     <SelectValue placeholder="Choose location" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card/95 backdrop-blur border-secondary/30">
+                  <SelectContent className="bg-card border-input">
                     {locationOptions.map((option) => (
                       <SelectItem key={option.id} value={option.id}>
                         {option.label}
@@ -158,7 +158,7 @@ const Index = () => {
                   placeholder="Enter a location..."
                   value={customLocation}
                   onChange={(e) => setCustomLocation(e.target.value)}
-                  className="bg-muted/40 border-accent/30 placeholder-muted-foreground text-foreground backdrop-blur-md"
+                  className="bg-background border-input text-foreground"
                 />
               </div>
             )}
@@ -178,9 +178,9 @@ const Index = () => {
               onClick={() => handleSearch(searchQuery)}
               className={cn(
                 "w-full h-12 flex items-center justify-center gap-2",
-                "bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl font-medium",
-                "hover:from-primary/90 hover:to-secondary/90 active:scale-[0.98] transition-all duration-200",
-                "shadow-lg border border-primary/30 backdrop-blur-sm"
+                "bg-primary text-primary-foreground rounded-xl font-medium",
+                "hover:bg-primary/90 active:scale-[0.98] transition-all duration-200",
+                "shadow-sm border border-primary/10"
               )}
             >
               <Search className="w-4 h-4" />
@@ -194,11 +194,11 @@ const Index = () => {
         {hasSearched && (
           <div className="mb-6 animate-fadeIn delay-2">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-primary font-display tracking-wide">
-                Best Matches <span className="text-accent">({spots.length})</span>
+              <h2 className="text-xl font-semibold text-foreground font-display tracking-wide">
+                Best Matches <span className="text-primary">({spots.length})</span>
               </h2>
-              <div className="flex items-center text-sm text-foreground bg-accent/20 px-3 py-1.5 rounded-full border border-accent/30">
-                <MapPin className="w-4 h-4 mr-1 text-accent" />
+              <div className="flex items-center text-sm text-foreground bg-muted px-3 py-1.5 rounded-full border border-border">
+                <MapPin className="w-4 h-4 mr-1 text-primary" />
                 <span className="font-medium">{getLocationDisplay()}</span>
               </div>
             </div>
@@ -208,19 +208,19 @@ const Index = () => {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-2xl bg-card/50 p-4 shadow-sm border border-muted/20 animate-pulse h-[460px]">
-                <div className="h-6 bg-muted/50 rounded w-3/4 mb-2"></div>
-                <div className="h-4 bg-muted/30 rounded w-1/4 mb-4 ml-auto"></div>
-                <div className="h-48 bg-muted/20 rounded-xl mb-4"></div>
+              <div key={i} className="rounded-xl bg-card/50 p-4 shadow-sm border border-border animate-pulse h-[460px]">
+                <div className="h-6 bg-muted rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-muted/80 rounded w-1/4 mb-4 ml-auto"></div>
+                <div className="h-48 bg-muted/60 rounded-xl mb-4"></div>
                 <div className="flex gap-2 mb-4">
-                  <div className="h-6 bg-primary/20 rounded-full w-24"></div>
-                  <div className="h-6 bg-secondary/20 rounded-full w-32"></div>
+                  <div className="h-6 bg-muted/40 rounded-full w-24"></div>
+                  <div className="h-6 bg-muted/40 rounded-full w-32"></div>
                 </div>
-                <div className="h-32 bg-muted/10 rounded-xl mb-4"></div>
+                <div className="h-32 bg-muted/30 rounded-xl mb-4"></div>
                 <div className="flex justify-between pt-2">
-                  <div className="h-8 bg-primary/20 rounded w-1/4"></div>
-                  <div className="h-8 bg-secondary/20 rounded w-1/4"></div>
-                  <div className="h-8 bg-accent/20 rounded w-1/4"></div>
+                  <div className="h-8 bg-muted/40 rounded w-1/4"></div>
+                  <div className="h-8 bg-muted/40 rounded w-1/4"></div>
+                  <div className="h-8 bg-muted/40 rounded w-1/4"></div>
                 </div>
               </div>
             ))}
@@ -238,8 +238,8 @@ const Index = () => {
         )}
       </main>
 
-      <footer className="py-8 bg-muted/10 border-t border-muted/20 mt-12">
-        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-primary/80 font-mono">
+      <footer className="py-8 bg-white border-t border-border mt-12">
+        <div className="container max-w-screen-lg mx-auto px-4 text-center text-sm text-muted-foreground font-mono">
           <p>© 2023 PerfectSpot. Find the perfect place that matches your needs.</p>
         </div>
       </footer>

@@ -55,13 +55,13 @@ export const SearchBar = ({
           placeholder="What are you looking for? (e.g., 'quiet cafe with outdoor seating and good wifi')"
           className={cn(
             "w-full h-14 pl-12 pr-4 rounded-xl",
-            "shadow-lg",
+            "shadow-sm",
             "border-2 border-input focus:border-primary/50",
-            "text-foreground bg-background/60 backdrop-blur-md",
-            "placeholder:text-muted-foreground/80",
+            "text-foreground bg-background",
+            "placeholder:text-muted-foreground",
             "outline-none focus:ring-2 focus:ring-primary/30",
             "transition-all duration-300",
-            "text-base md:text-lg font-medium"
+            "text-base md:text-lg"
           )}
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-3.5">

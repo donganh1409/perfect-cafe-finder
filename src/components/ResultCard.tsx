@@ -10,9 +10,9 @@ interface BadgeProps {
 
 const BadgeComponent = ({ badge }: BadgeProps) => {
   const colorMap = {
-    blue: "bg-spot-100 text-spot-700 border-spot-200",
+    blue: "bg-blue-50 text-blue-700 border-blue-100",
     green: "bg-green-50 text-green-700 border-green-100",
-    orange: "bg-orange-50 text-orange-700 border-orange-100"
+    orange: "bg-amber-50 text-amber-700 border-amber-100"
   };
 
   return (
@@ -35,18 +35,18 @@ interface ReasonItemProps {
 const ReasonItem = ({ reason, index }: ReasonItemProps) => (
   <div 
     className={cn(
-      "flex items-start py-1.5 animate-slideRightAndFade"
+      "flex items-start py-1.5 animate-slideRightAndFade border-b last:border-b-0 border-blue-100/50"
     )}
     style={{ animationDelay: `${0.1 + index * 0.1}s` }}
   >
-    <div className="flex-shrink-0 mt-1 mr-2.5 text-primary">
+    <div className="flex-shrink-0 mt-1 mr-3 text-primary">
       <div className="w-5 h-5 flex items-center justify-center rounded-full bg-primary/10">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
     </div>
-    <div>
+    <div className="flex-1">
       <span className="font-medium text-foreground">{reason.highlight}</span>
       <span className="ml-1 text-muted-foreground">{reason.description}</span>
     </div>
@@ -82,14 +82,14 @@ export const ResultCard = ({ spot, index }: ResultCardProps) => {
   return (
     <div 
       className={cn(
-        "bg-card rounded-2xl p-4 md:p-5 shadow-sm border border-border/80",
+        "bg-card rounded-2xl p-4 md:p-5 shadow-sm border border-border",
         "hover:shadow-md hover:border-border transition-all duration-300",
         "animate-fadeIn"
       )}
       style={{ animationDelay: `${0.2 + index * 0.1}s` }}
     >
       <div className="flex justify-between items-start mb-2.5">
-        <h3 className="text-xl font-semibold text-card-foreground">{spot.name}</h3>
+        <h3 className="text-xl font-semibold text-foreground">{spot.name}</h3>
         <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-full">
           <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
           <span className="font-medium text-amber-700 text-sm">{spot.rating.toFixed(1)}</span>
@@ -125,15 +125,17 @@ export const ResultCard = ({ spot, index }: ResultCardProps) => {
       </div>
 
       {/* Match reasons */}
-      <div className="p-3.5 rounded-xl bg-spot-50 border border-spot-100 mb-4">
-        <h4 className="text-sm font-medium text-spot-800 mb-1">Why this matches your search:</h4>
-        {spot.matchReasons.map((reason, i) => (
-          <ReasonItem key={reason.key} reason={reason} index={i} />
-        ))}
+      <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-100 mb-4">
+        <h4 className="text-sm font-medium text-blue-800 mb-2 pb-1 border-b border-blue-100">Why this matches your search:</h4>
+        <div className="space-y-1">
+          {spot.matchReasons.map((reason, i) => (
+            <ReasonItem key={reason.key} reason={reason} index={i} />
+          ))}
+        </div>
       </div>
 
       {/* Action buttons */}
-      <div className="flex items-center justify-between pt-2 border-t border-border/60">
+      <div className="flex items-center justify-between pt-2 border-t border-border">
         <ActionButton 
           icon={<MapPin className="w-4 h-4" />} 
           label="Directions" 

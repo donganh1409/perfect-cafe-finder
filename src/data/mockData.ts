@@ -1,3 +1,4 @@
+
 import { FilterOption, Spot, LocationOption, DistanceFilterOption } from "../types";
 
 export const defaultFilters: FilterOption[] = [
@@ -5,6 +6,10 @@ export const defaultFilters: FilterOption[] = [
   { id: "moderate-price", label: "$$" },
   { id: "high-rated", label: "High Rated" },
   { id: "social-vibe", label: "Social Vibe" },
+  { id: "work-friendly", label: "Work Friendly" },
+  { id: "quiet-space", label: "Quiet Space" },
+  { id: "fast-wifi", label: "Fast WiFi" },
+  { id: "power-outlets", label: "Power Outlets" },
   { id: "pet-friendly", label: "Pet Friendly" }
 ];
 
