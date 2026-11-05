@@ -8,5 +8,8 @@ export default defineConfig({
   server: { host: "::", port: 8080 },
   plugins: [react()],
   resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
-  build: { outDir: "docs", emptyOutDir: true },
+  build: {
+    outDir: "docs", emptyOutDir: true,
+    rollupOptions: { output: { manualChunks: id => (id.includes("node_modules/leaflet") ? "leaflet" : id.includes("src/data/cafes.json") ? "cafes" : id.includes("node_modules") ? "vendor" : undefined) } },
+  },
 });
