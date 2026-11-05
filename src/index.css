@@ -1,212 +1,50 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
+    --background: 0 0% 100%;
+    --foreground: 248 37% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
+    --card-foreground: 248 37% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217 91% 60%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
-
+    --popover-foreground: 248 37% 12%;
+    --primary: 252 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 252 100% 97%;
+    --secondary-foreground: 248 37% 12%;
+    --muted: 252 60% 96%;
+    --muted-foreground: 248 9% 46%;
+    --accent: 332 100% 69%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 210 40% 98%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 221 83% 53%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 221 83% 53%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 254 46% 92%;
+    --input: 254 46% 92%;
+    --ring: 252 100% 65%;
+    --radius: 1rem;
   }
-
-  .dark {
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 45% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217 91% 60%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 75%;
-
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 25%;
-    --input: 217 33% 17%;
-    --ring: 224 76% 48%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border selection:bg-primary/10 selection:text-primary;
-  }
-
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
-  }
-
-  html {
-    @apply scroll-smooth;
-  }
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white text-cf-ink font-sans antialiased; }
+  ::selection { background: #C8F55A; color: #17142B; }
+  :focus-visible { outline: 3px solid #6B4BFF; outline-offset: 2px; border-radius: 10px; }
 }
 
 @layer components {
-  /* Glass morphism */
-  .glass {
-    @apply bg-white/90 backdrop-blur-lg border border-white/20 shadow-glass;
-  }
-  
-  .glass-dark {
-    @apply bg-card/80 backdrop-blur-lg border border-border shadow-glass;
-  }
-  
-  .glass-accent {
-    @apply bg-primary/5 backdrop-blur-lg border border-primary/20 shadow-glass;
-  }
-
-  /* Animation classes */
-  .animate-in {
-    animation-name: fadeIn;
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-  }
-  
-  .animate-out {
-    animation-name: fadeOut;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-  }
-  
-  /* Staggered animation delays */
-  .delay-1 {
-    animation-delay: 0.1s;
-  }
-  
-  .delay-2 {
-    animation-delay: 0.2s;
-  }
-  
-  .delay-3 {
-    animation-delay: 0.3s;
-  }
-  
-  .delay-4 {
-    animation-delay: 0.4s;
-  }
-  
-  .delay-5 {
-    animation-delay: 0.5s;
-  }
-
-  /* Input styles with better visibility */
-  .search-input {
-    @apply text-foreground placeholder:text-muted-foreground bg-background;
-  }
-
-  /* More minimal gradients */
-  .gradient-header {
-    @apply bg-gradient-to-br from-white to-muted;
-  }
-  
-  .gradient-card {
-    @apply bg-white shadow-sm;
-  }
+  .cf-panel { @apply rounded-[24px] border border-cf-line bg-white p-4 md:p-5; }
+  .cf-h { @apply font-display text-[19px] font-semibold leading-tight; }
+  .cf-btn { @apply inline-flex items-center justify-center gap-2 rounded-full bg-cf-violet px-4 py-2.5 text-[14.5px] font-semibold text-white transition hover:bg-[#5938F5] active:translate-y-px; }
+  .cf-btn-ghost { @apply inline-flex items-center gap-1.5 rounded-full border border-cf-line bg-white px-3.5 py-2 text-[13.5px] font-semibold transition hover:border-cf-ink; }
+  .cf-card { @apply cursor-pointer rounded-[26px] border border-cf-line bg-white p-2.5 pb-4 transition hover:-translate-y-0.5 hover:shadow-[0_14px_34px_-18px_rgba(23,20,43,.35)]; }
+  .cf-card > :not(:first-child) { @apply px-2; }
+  .cf-icon { @apply inline-flex h-9 min-w-9 items-center justify-center gap-1 rounded-full border border-cf-line bg-white px-2 transition hover:border-cf-ink; }
+  .cf-map { @apply relative overflow-hidden rounded-[24px] border border-cf-line; aspect-ratio: 960 / 340; }
+  @media (max-width: 1023px) { .cf-map { aspect-ratio: 4 / 3; } }
+  .cf-step { @apply grid gap-1 rounded-2xl bg-cf-soft p-4 text-[13.5px] leading-snug; }
+  .cf-step b { @apply font-display text-[16px] font-semibold text-cf-violet; }
+  .cf-pin { @apply inline-block h-6 w-6 rounded-full bg-cf-violet; box-shadow: inset -6px -6px 0 #FF5FA2; }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
-}
-
-/* For Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--muted)) transparent;
-}
-
-/* Smooth image transitions */
-img {
-  transition: opacity 0.3s ease-in-out;
-}
-
-img.loading {
-  opacity: 0;
-}
-
-img.loaded {
-  opacity: 1;
-}
-
-/* Font adjustments for modern tech look */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-display tracking-tight;
-}
-
-.font-futuristic {
-  @apply font-display tracking-wider;
-}
-
-/* Search input specific styles */
-input::placeholder {
-  @apply text-muted-foreground;
-}
-
-/* Improved select dropdowns */
-.select-futuristic {
-  @apply border-input text-foreground backdrop-blur-md;
-}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }

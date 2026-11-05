@@ -1,24 +1,20 @@
-name: Run Tests
+name: Test and build
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Setup Python
-        uses: actions/setup-python@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          python-version: "3.8"
-
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Tests
-        run: pytest
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run lint
+      - run: npm run build
