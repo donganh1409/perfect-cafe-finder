@@ -46,7 +46,7 @@ cd perfect-cafe-finder
 npm ci
 npm run dev      # http://localhost:8080/perfect-cafe-finder/
 npm test         # engine tests (vitest)
-npm run build    # static site in docs/, served by GitHub Pages
+npm run build    # static site in docs/; a workflow copies it to gh-pages
 ```
 
 Stack: Vite, React 18, TypeScript, Tailwind CSS. There is no backend.
